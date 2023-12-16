@@ -15,18 +15,18 @@ public class Document {
     private String country;
     @Column(name = "codice_Postale")
     private String code;
-
     @OneToOne
-    @JoinColumn(name = "user_id") // JoinColumn specifica il NOME della colonna altrimenti il suo valore di default
-    private User user;            // sarà il nome dell'attributo + "_id".
-
+    @JoinColumn(name = "user_id", nullable = false) // JoinColumn specifica il NOME della colonna altrimenti il suo valore di default
+    private User user;            // sarà il nome dell'attributo + "_id". Quindi adesso ho creato la chiave esterna
+                                  // collegata alla classe User. questa FK si collegerà alla chiave primaria di User
     //Costruttori
     public Document() {}
 
-    public Document(LocalDate issueDate, String country, String code) {
+    public Document(LocalDate issueDate, String country, String code, User user) {
         this.issueDate = issueDate;
         this.country = country;
         this.code = code;
+        this.user = user;
     }
 
     //GETTER E SETTER
@@ -65,7 +65,7 @@ public class Document {
 
     public void setUser(User user) { // ha senso dare la possibilità di settare una chiave secondaria o è pericoloso?
         this.user = user;
-    }
+    } // ha senso poter modificare lo user associato a un documento?
 
     @Override
     public String toString() {
@@ -74,6 +74,7 @@ public class Document {
                 ", issueDate=" + issueDate +
                 ", country='" + country + '\'' +
                 ", code='" + code + '\'' +
+                ", user=" + user +
                 '}';
     }
 }
