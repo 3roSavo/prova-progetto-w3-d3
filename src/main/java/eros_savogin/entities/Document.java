@@ -18,7 +18,7 @@ public class Document {
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false) // JoinColumn specifica il NOME della colonna altrimenti il suo valore di default
     private User user;            // sarà il nome dell'attributo + "_id". Quindi adesso ho creato la chiave esterna
-                                  // collegata alla classe User. questa FK si collegerà alla chiave primaria di User
+                                  // collegata alla classe User. questa FK si collegherà alla chiave primaria di User
     //Costruttori
     public Document() {}
 

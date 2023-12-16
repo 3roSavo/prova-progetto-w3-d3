@@ -18,7 +18,7 @@ public class DocumentsDAO {
         transaction.begin();
         em.persist(document);
         transaction.commit();
-        //System.out.println("creato con successo documento con il seguente id : " + document.getId() + ", collegato a  " + document.getUser().getFirstName() + " (id:" + document.getUser().getId() + ")" );
+        System.out.println("creato con successo documento con il seguente id : " + document.getId() + ", collegato a  " + document.getUser().getFirstName() + " (id:" + document.getUser().getId() + ")" );
 
     }
 

@@ -23,15 +23,15 @@ public class Application {
         User u2 = new User("Fabrizio", "Corona");
         User u3 = new User("Donatello", "Crosetto");
 
-        //Document d1 = new Document(LocalDate.parse("2012-07-30"), "Denmark", "763096", uDao.findById(6));
+        Document d1 = new Document(LocalDate.parse("2013-02-20"), "Usa", "4615620", uDao.findById(66));
         //dDao.Save(d1);
         // in questo caso dopo aver messo l'attributo chiave esterna user in Document nullable = false non mi consentirà di salvare il documento
-        // ed è un bene, perchè sennò mi sarei ritrovato un document non collegato ad alcun user (con user_id = null)
-
-        System.out.println("ciaooooo");
+        // ed è un bene, perché sennò mi sarei ritrovato un document non collegato ad alcun user (con user_id = null)
 
         //dDao.findByIdAndDelete(17);
-
+        System.out.println(dDao.findById(12));
+        System.out.println(uDao.findById(4).getDocument()); // grazie al mappedBy ora posso accedere al document anche
+                                                            // dallo user, tramite i getter e setter appositi
         //uDao.save(u1);
         //uDao.save(u2);
         //uDao.save(u3);
