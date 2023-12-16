@@ -1,2 +1,4 @@
-package eros_savogin.entities;public class BlogPost {
+package eros_savogin.entities;
+
+public class BlogPost {
 }
