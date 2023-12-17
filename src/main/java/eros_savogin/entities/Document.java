@@ -16,10 +16,10 @@ public class Document {
     @Column(name = "codice_Postale")
     private String code;
     @OneToOne
-    @JoinColumn(name = "user_id", nullable = false) // JoinColumn specifica il NOME della colonna altrimenti il suo valore di default
+    @JoinColumn(name = "user_id", nullable = false, unique = true) // JoinColumn specifica il NOME della colonna altrimenti il suo valore di default
     private User user;            // sarà il nome dell'attributo + "_id". Quindi adesso ho creato la chiave esterna
                                   // collegata alla classe User. questa FK si collegherà alla chiave primaria di User
-    //Costruttori
+    //Costruttori                 // unique = true serve per evitare che si inseriscano più documenti collegati allo stesso User (un User, un Document)
     public Document() {}
 
     public Document(LocalDate issueDate, String country, String code, User user) {

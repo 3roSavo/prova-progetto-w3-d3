@@ -1,7 +1,9 @@
 package eros_savogin;
 
+import eros_savogin.DAO.BlogPostsDAO;
 import eros_savogin.DAO.DocumentsDAO;
 import eros_savogin.DAO.UsersDAO;
+import eros_savogin.entities.BlogPost;
 import eros_savogin.entities.Document;
 import eros_savogin.entities.User;
 
@@ -16,8 +18,9 @@ public class Application {
     public static void main(String[] args) {
 
         EntityManager em = emf.createEntityManager();
-        UsersDAO uDao = new UsersDAO(em);
+        UsersDAO uDao = new UsersDAO(em);                  // ecco passato a tutte e tre le classi DAO l' Entity Manager appena creato
         DocumentsDAO dDao = new DocumentsDAO(em);
+        BlogPostsDAO bDao = new BlogPostsDAO(em);
 
         User u1 = new User("Piero", "Trevisan");
         User u2 = new User("Fabrizio", "Corona");
@@ -32,6 +35,16 @@ public class Application {
         System.out.println(dDao.findById(12));
         System.out.println(uDao.findById(4).getDocument()); // grazie al mappedBy ora posso accedere al document anche
                                                             // dallo user, tramite i getter e setter appositi
+        long id = 5;
+        BlogPost bp1 = new BlogPost("vuoi fare soldi facili? ecco il consiglio", "cercati un lavoro, sfaticato!", em.find(User.class, id));
+        //bDao.Save(bp1);
+        System.out.println(bp1.getUser().getFirstName() + " " + bp1.getUser().getLastName());  // non so perché due righe sopra non vada em.find(User.class, 5) quindi ho dichiarato una variabile long sopra
+                                                                                               // penso perché 5 è considerato primitivo e lo legge come Int e non long
+
+        System.out.println(uDao.findById(5).getBlogPosts());  // mi esce una lista con tutti i blogPost per lo User con id 4
+        System.out.println("---------------FOREACH----------------");
+        uDao.findById(5).getBlogPosts().forEach(blogPost -> System.out.println(blogPost));  // ritorno con un forEach tante print line quante sono i blogPost
+
         //uDao.save(u1);
         //uDao.save(u2);
         //uDao.save(u3);

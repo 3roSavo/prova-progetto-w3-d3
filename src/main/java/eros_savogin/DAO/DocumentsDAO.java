@@ -9,6 +9,7 @@ public class DocumentsDAO {
 
     private final EntityManager em;
 
+    //COSTRUTTORE
     public DocumentsDAO(EntityManager em) {
         this.em = em;
     }
@@ -18,7 +19,7 @@ public class DocumentsDAO {
         transaction.begin();
         em.persist(document);
         transaction.commit();
-        System.out.println("creato con successo documento con il seguente id : " + document.getId() + ", collegato a  " + document.getUser().getFirstName() + " (id:" + document.getUser().getId() + ")" );
+        System.out.println("creato con successo documento con il seguente id : " + document.getId() + ", collegato a  " + document.getUser().getFirstName() + " " + document.getUser().getLastName() + " (id:" + document.getUser().getId() + ")" );
 
     }
 
