@@ -33,17 +33,17 @@ public class Application {
 
         //dDao.findByIdAndDelete(17);
         System.out.println(dDao.findById(12));
-        System.out.println(uDao.findById(4).getDocument()); // grazie al mappedBy ora posso accedere al document anche
+        //System.out.println(uDao.findById(4).getDocument()); // grazie al mappedBy ora posso accedere al document anche
                                                             // dallo user, tramite i getter e setter appositi
         long id = 5;
         BlogPost bp1 = new BlogPost("vuoi fare soldi facili? ecco il consiglio", "cercati un lavoro, sfaticato!", em.find(User.class, id));
         //bDao.Save(bp1);
-        System.out.println(bp1.getUser().getFirstName() + " " + bp1.getUser().getLastName());  // non so perché due righe sopra non vada em.find(User.class, 5) quindi ho dichiarato una variabile long sopra
+        //System.out.println(bp1.getUser().getFirstName() + " " + bp1.getUser().getLastName());  // non so perché due righe sopra non vada em.find(User.class, 5) quindi ho dichiarato una variabile long sopra
                                                                                                // penso perché 5 è considerato primitivo e lo legge come Int e non long
 
-        System.out.println(uDao.findById(5).getBlogPosts());  // mi esce una lista con tutti i blogPost per lo User con id 4
-        System.out.println("---------------FOREACH----------------");
-        uDao.findById(5).getBlogPosts().forEach(blogPost -> System.out.println(blogPost));  // ritorno con un forEach tante print line quante sono i blogPost
+        //System.out.println(uDao.findById(5).getBlogPosts());  // mi esce una lista con tutti i blogPost per lo User con id 4
+        //System.out.println("---------------FOREACH----------------");
+        //uDao.findById(5).getBlogPosts().forEach(blogPost -> System.out.println(blogPost));  // ritorno con un forEach tante print line quante sono i blogPost
 
         //uDao.save(u1);
         //uDao.save(u2);

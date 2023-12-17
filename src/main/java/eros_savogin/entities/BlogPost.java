@@ -1,9 +1,10 @@
 package eros_savogin.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "blogs")
+@Table(name = "blogPosts")
 public class BlogPost {
     @Id
     @GeneratedValue
@@ -16,7 +17,13 @@ public class BlogPost {
     private User user;    // <---- FOREIGN KEY, verso User         // devo essere sicuro che sia collegato ad uno User,
                                                                    // facendo così non c'è rischio che io crei un
                                                                    // blogpost non associato a un utente
-    //COSTRUTTORI
+    @ManyToMany
+    @JoinTable(name = "blogs_categories",
+              joinColumns = @JoinColumn(name = "blogPost_id"),
+              inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private List<Category> categoryList;
+
+    // COSTRUTTORI ------------------
 
     public BlogPost() {}
 
