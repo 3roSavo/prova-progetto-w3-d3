@@ -17,6 +17,7 @@ public class BlogPost {
     private User user;    // <---- FOREIGN KEY, verso User         // devo essere sicuro che sia collegato ad uno User,
                                                                    // facendo così non c'è rischio che io crei un
                                                                    // blogpost non associato a un utente
+                                                                   // qui sto creando una nuova colonna quindi
     @ManyToMany
     @JoinTable(name = "blogs_categories",
               joinColumns = @JoinColumn(name = "blogPost_id"),
